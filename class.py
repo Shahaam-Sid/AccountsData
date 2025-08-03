@@ -10,7 +10,29 @@ class User:
         self.password = ""
         
     def getEmail(self):
-        self.email = input(f"{self.username} Enter your E-mail: ")
+        emailUnique = False
+        
+        while not emailUnique:
+            self.email = input(f"{self.username} Enter your E-mail: ")
+            try:
+                with open(User.filePath, "r", newline="") as file:
+                    content = csv.DictReader(file)
+                    
+                    for row in content:
+                        if row["email"] == self.email:
+                            print("Email Already Exists, Enter Again")
+                        
+                        else:
+                            emailUnique = True
+                            
+                
+            except FileNotFoundError:
+                print("Data File not found")
+            except Exception as e:
+                print("An Error has occured")
+    
+    
+    
     def getPassword(self):
         passMatch = False
         
