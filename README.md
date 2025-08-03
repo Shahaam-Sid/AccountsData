@@ -1,2 +1,2 @@
 # AccountsData
-A program to read and Account details
+A program to read and write Account details
