@@ -11,7 +11,7 @@ class User:
         
     def getEmail(self):
         while True:
-            self.email = input(f"{self.username}, Enter your E-mail: ")
+            self.email = self.emailFormating()
             emailExists = False
 
             try:
@@ -29,8 +29,21 @@ class User:
             if not emailExists:
                 break
 
-    
-    
+    def emailFormating(self):
+        mailAcceptable = False
+        while not mailAcceptable:
+            rawmail = input(f"{self.username}, Enter your E-mail: ").strip()
+
+            if "@" not in rawmail:
+                print("Email must contain '@'")
+            elif rawmail.startswith("@") or rawmail.endswith("@"):
+                print("'@' cannot be in the start or in the end")
+            elif "." not in rawmail.split("@")[-1]:
+                print("E-mail must contain .com/.net etc.")
+            else:
+                mailAcceptable = True
+        
+        return rawmail     
     
     def getPassword(self):
         passMatch = False
