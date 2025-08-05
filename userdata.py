@@ -52,7 +52,7 @@ class User:
             passUnique = False
 
             while not passUnique:
-                passOnce = input("Enter Password: ")
+                passOnce = self.passFormating()
                 passwordExists = False
 
                 try:
@@ -79,6 +79,17 @@ class User:
             else:
                 print("Passwords do not match, try again.")
 
+    def passFormating(self):
+        passAcceptable = False
+        while not passAcceptable:
+            rawPass = input("Enter Password: ")
+            if len(rawPass) < 8 or len(rawPass) > 15:
+                print("Password must contain atleast 8 and at most 15 characters")
+            else:
+                passAcceptable = True
+            
+        return rawPass
+        
             
     def __str__(self):
         return f"Username: {self.username}, E-mail: {self.email}, Password: {self.password}"
