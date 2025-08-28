@@ -106,3 +106,22 @@ class User:
         except Exception:
             print("An Error Occured")   
             
+    @classmethod
+    def login(cls):
+        
+        email_logging = input("Enter your E-mail: ")
+        emailMatched = False
+        
+        try:
+            with open(User.filePath, "r", newline="") as file:
+                content = csv.DictReader(file)
+                for row in content:
+                    if row["email"] == email_logging:
+                        emailMatched = True
+                        break
+                    
+            if emailMatched:
+                print("Enter Pass")
+            
+        except FileNotFoundError:
+            pass
