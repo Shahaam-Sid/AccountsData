@@ -121,7 +121,26 @@ class User:
                         break
                     
             if emailMatched:
-                print("Enter Pass")
+                pass_logging = input("Enter your Password: ")
+                passMathched = False
+                
+                with open(User.filePath, "r", newline="") as file:
+                    content = csv.DictReader(file)
+                    for row in content:
+                        if (row["email"] == email_logging) and (row["password"] == pass_logging):
+                            passMathched = True
+                            break
+                        
+                if passMathched:
+                    print("You Haved Logged in")
+                    
+                else:
+                    print("Wrong Password | Try again")
+                
+                
+                
+            else:
+                print("Wrong Email | Try Again")
             
         except FileNotFoundError:
             pass

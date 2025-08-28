@@ -1,4 +1,3 @@
-import csv
 from userdata import User
 
 data = ["username", "email", "password"]
@@ -7,13 +6,12 @@ try:
     print(f"""
 Sign up -- 1
 Log in -- 2
-Delete Account -- 3
-Exit -- 4
+Exit -- 3
 """)
     
     while True:
     
-        choice = input("Enter your choice(1, 2 or 3) > ")
+        choice = input("Enter your choice(1, 2, or 3) > ")
         
         match choice:
             case "1":
@@ -26,11 +24,10 @@ Exit -- 4
             
             case "2":
                 User.login()
+                break
             
             case "3":
-                print("under construction")
-            case "4":
-                print("program end")
+                print("Program Ended")
                 break
         
     
