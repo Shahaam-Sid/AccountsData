@@ -1,4 +1,5 @@
 import csv
+import hashlib
 
 class User:
     
@@ -144,3 +145,15 @@ class User:
             
         except FileNotFoundError:
             pass
+        
+        
+    @staticmethod
+    def encoder( base):
+        h = hashlib.new("SHA256")
+        
+        correct_password = base
+        h.update(correct_password.encode())
+        
+        hash_password  = h.hexdigest()
+        return hash_password
+        
