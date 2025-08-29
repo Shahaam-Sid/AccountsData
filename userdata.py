@@ -104,8 +104,8 @@ class User:
         except Exception:
             print("An Error Occured")   
             
-    @classmethod
-    def login(cls):
+    @staticmethod
+    def login():
         
         email_logging = input("Enter your E-mail: ")
         emailMatched = False
