@@ -53,7 +53,7 @@ class User:
             passUnique = False
 
             while not passUnique:
-                passOnce = self.passFormating()
+                passOnce = User.encoder(self.passFormating())
                 passwordExists = False
 
                 try:
@@ -73,7 +73,7 @@ class User:
                 if not passwordExists:
                     passUnique = True
 
-            passTwice = input("Enter Password Again: ")
+            passTwice = User.encoder(input("Enter Password Again: "))
             if passOnce == passTwice:
                 self.password = passOnce
                 passMatch = True
@@ -96,6 +96,7 @@ class User:
         return f"Username: {self.username}, E-mail: {self.email}, Password: {self.password}"
     
     def loadData(self):
+        
         data = [self.username, self.email, self.password]
         try:
             with open(User.filePath, "a", newline="") as file:
@@ -122,7 +123,7 @@ class User:
                         break
                     
             if emailMatched:
-                pass_logging = input("Enter your Password: ")
+                pass_logging = User.encoder(input("Enter your Password: "))
                 passMathched = False
                 
                 with open(User.filePath, "r", newline="") as file:
@@ -148,7 +149,7 @@ class User:
         
         
     @staticmethod
-    def encoder( base):
+    def encoder(base):
         h = hashlib.new("SHA256")
         
         correct_password = base
