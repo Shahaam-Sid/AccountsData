@@ -90,10 +90,6 @@ class User:
                 passAcceptable = True
             
         return rawPass
-        
-            
-    def __str__(self):
-        return f"Username: {self.username}, E-mail: {self.email}, Password: {self.password}"
     
     def loadData(self):
         
@@ -157,4 +153,3 @@ class User:
         
         hash_password  = h.hexdigest()
         return hash_password
-        
